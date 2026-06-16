@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vulnerable AI Chat Bot - Login</title>
+    <style>
+        :root {
+            --bg-start: #eef5ff;
+            --bg-end: #dbeafe;
+            --panel: rgba(255, 255, 255, 0.94);
+            --panel-edge: rgba(47, 109, 201, 0.12);
+            --text: #16325c;
+            --muted: #5f7ea8;
+            --primary: #2f7df6;
+            --primary-strong: #1f66d1;
+            --glow: rgba(47, 125, 246, 0.24);
+            --input-bg: #f8fbff;
+            --input-border: rgba(47, 109, 201, 0.16);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Trebuchet MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background:
+                url("/static/images/loginpagebg.png") center center / cover no-repeat fixed;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background: linear-gradient(160deg, rgba(255, 245, 250, 0.95), rgba(246, 235, 255, 0.94));
+            border-radius: 24px;
+            border: 1px solid rgba(169, 73, 141, 0.24);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 24px 70px rgba(92, 24, 84, 0.24);
+            overflow: hidden;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background:
+                linear-gradient(135deg, rgba(225, 43, 93, 0.96), rgba(134, 36, 182, 0.94));
+            padding: 34px 24px 28px;
+            text-align: center;
+            color: #fff6fc;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+        }
+
+        .header h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .header p {
+            font-size: 14px;
+            color: rgba(255, 230, 243, 0.9);
+        }
+
+        .form-container {
+            padding: 30px 30px 26px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid var(--input-border);
+            border-radius: 14px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: var(--input-bg);
+            color: var(--text);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(47, 125, 246, 0.12);
+        }
+
+        .form-group input::placeholder {
+            color: #8aa3c7;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, rgba(225, 43, 93, 0.96), rgba(134, 36, 182, 0.94));
+            color: #f7fbff;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 14px 28px rgba(128, 33, 122, 0.28);
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 34px rgba(128, 33, 122, 0.36);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .footer {
+            background: linear-gradient(135deg, rgba(255, 238, 245, 0.95), rgba(245, 232, 255, 0.94));
+            padding: 18px 20px 22px;
+            text-align: center;
+            border-top: 1px solid rgba(169, 73, 141, 0.18);
+        }
+
+        .powered-by {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .powered-by p {
+            font-size: 12px;
+            color: #8c4a74;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .powered-by img {
+            max-height: 30px;
+            max-width: 150px;
+            object-fit: contain;
+        }
+        .footer-note {
+            margin-top: 12px;
+            font-size: 11px;
+            line-height: 1.5;
+            color: #6b7280;
+            text-align: center;
+        }
+
+        .footer-note p {
+            margin-bottom: 2.5px;
+        }
+
+        .footer-note strong {
+            color: #b03fa5;
+        }
+
+        .account-link {
+            margin-top: 18px;
+            text-align: center;
+            color: #6c5779;
+            font-size: 14px;
+        }
+
+        .account-link a {
+            color: #b03fa5;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .error-message {
+            display: none;
+            background: rgba(220, 53, 69, 0.08);
+            color: #b42332;
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            border: 1px solid rgba(220, 53, 69, 0.12);
+        }
+
+        .error-message.show {
+            display: block;
+            animation: shake 0.3s;
+        }
+
+        .success-message {
+            display: none;
+            background: rgba(44, 157, 93, 0.1);
+            color: #1f7a46;
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            border: 1px solid rgba(44, 157, 93, 0.16);
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                max-width: 100%;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .form-container {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Vulnerable AI Chat Bot</h1>
+            <p>Intelligent Conversation Assistant</p>
+        </div>
+
+        <div class="form-container">
+            {% if error_message %}
+            <div class="error-message show">{{ error_message }}</div>
+            {% endif %}
+
+            {% if success_message %}
+            <div class="success-message show">{{ success_message }}</div>
+            {% endif %}
+
+            <form id="loginForm" method="post" action="/login">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        placeholder="Enter your username"
+                        required
+                        autocomplete="username"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Enter your password"
+                        required
+                        autocomplete="current-password"
+                    >
+                </div>
+
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+
+            <div class="account-link">
+                Need an account? <a href="/register">Register here</a>
+            </div>
+        </div>
+
+                <div class="footer">
+            <div class="powered-by">
+                <p>Powered by</p>
+                <img src="../static/images/powerdby.png" alt="Powered by" onerror="this.style.display='none'">
+            </div>
+
+
+            <div class="footer-note">
+                <p>
+                    This application is intended for learning purposes only.
+                </p>
+                <p>
+                    It is not recommended for production use.
+                </p>
+                <p>
+                    For any questions, issues, or support requests,
+                <p>
+                    please contact:<strong> info@purplesynapz.com</strong>
+                </p>
+                </p>
+            </div>
+
+
+        </div>
+
+    </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        :root {
+            --bg: linear-gradient(135deg, #3b0d22 0%, #5f1238 38%, #5d1a72 72%, #34114c 100%);
+            --panel: rgba(44, 18, 53, 0.74);
+            --panel-edge: rgba(255, 210, 233, 0.16);
+            --text: #fff1f8;
+            --danger: #e12b5d;
+            --danger-strong: #8724b6;
+        }
+
+        html,
+        body {
+            min-height: 100%;
+            font-family: 'Trebuchet MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background:
+                radial-gradient(circle at 14% 8%, rgba(255, 96, 138, 0.34), transparent 26%),
+                radial-gradient(circle at 82% 12%, rgba(177, 73, 255, 0.28), transparent 28%),
+                radial-gradient(circle at 50% 100%, rgba(112, 28, 146, 0.18), transparent 30%),
+                var(--bg);
+            color: var(--text);
+        }
+
+        .header {
+            height: 1cm;
+            min-height: 38px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, rgba(225, 43, 93, 0.24), rgba(134, 36, 182, 0.22)), var(--panel);
+            border-bottom: 1px solid var(--panel-edge);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 10px 24px rgba(18, 5, 23, 0.3);
+        }
+
+        .brand {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: 0.02em;
+        }
+
+        .logout-btn {
+            border: none;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--danger), var(--danger-strong));
+            color: white;
+            padding: 8px 14px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 24px rgba(128, 33, 122, 0.24);
+        }
+
+        .logout-btn:hover {
+            background: linear-gradient(135deg, #f13d72, #9a33ca);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="brand">PurpleSynapz Vulnerable AI</div>
+        <form method="post" action="/logout">
+            <button class="logout-btn" type="submit">Log Out</button>
+        </form>
+    </header>
+</body>
+</html>

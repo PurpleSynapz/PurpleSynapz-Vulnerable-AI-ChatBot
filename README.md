@@ -1,19 +1,19 @@
 PurpleSynapz Vulnerable AI ChatBot 
 
-Overview : 
+# Overview : 
     PurpleSynapz Vulnerable AI ChatBot is a Flask based web application designed for AI security learning and security awareness training. 
     The application intentionally contains vulnerable AI chatbot behaviors that can be used to understand prompt injection attacks, 
     data leakage risks, insecure AI implementations, and other AI security concepts.
     The chatbot uses local Large Language Models (LLMs or SLMs) through Ollama and implements a Retrieval Augmented Generation (RAG) pipeline containing simulated sensitive information for educational demonstrations.
 
-Important Warning:
+# Important Warning:
     ⚠️ Educational Purpose Only
     This project is intentionally designed for training and learning purposes.
     DO NOT use this application in production environments.
     The application may contain intentionally vulnerable configurations, insecure logic, and demonstration code that could expose sensitive information if deployed in a real world environment.
 
 
-Features:
+# Features:
     *AI Chat Interface
         Interactive AI chatbot powered by local LLMs.
         Uses Ollama for model execution.
@@ -23,7 +23,7 @@ Features:
         Embedding generation using local embedding models.
         Context aware responses.
 
-Technology Stack:
+# Technology Stack:
     Component	                                        -- Technology
     Backend	                                            -- Python
     Framework	                                        -- Flask
@@ -33,18 +33,17 @@ Technology Stack:
     Retrieval System	                                -- RAG
     Frontend	                                        -- HTML, CSS, etc.
 
-Project Architecture:
+# Project Architecture:
 
     User → Flask Application → RAG Pipeline → Ollama LLM
-
     User submits a query.
     Relevant documents are retrieved from the knowledge base.
     Context is appended to the prompt.
     Prompt is sent to the local LLM.
     Response is returned to the user.
 
-Requirements:
-    Hardwares:
+# Requirements:
+    1. Hardwares:
         1.Minimum Requirements :
             1.CPU 	            -- Dual-Core Processor
             2.RAM	            -- 8 GB
@@ -58,73 +57,32 @@ Requirements:
             4.GPU               -- Optional (NVIDIA GPU with CUDA support for improved performance).
             5.Network           -- Stable broadband connection.
 
-    1.Python 3.13+
-        Ensure that Python 3.13 or later is installed on your system.
+    2.Python 3.12+
+    3.Ollama
 
-    Python Installation
+    # Installation of Python and Ollama for windows
+            execute below commands in Terminal/Command Prompt
 
-        1.Windows:
+    
+        - Python Installation:
             if already python is installed verify python:
                 python --version
 
             if not installed follow the step to install python:
 
-            1. Download Python from:
-            https://www.python.org/downloads/
-		Download Python Install Manager
+                1. Download Python from:
+                https://www.python.org/downloads/
+                    Download Python Install Manager
 
-            2. Run the installer.
+                2. Run the installer.
 
-            3. During installation, enable:
-                Add Python to PATH
+                3. During installation, enable:
+                    Add Python to PATH
 
-            4. Verify the installation:
-                python --version
+                4. Verify the installation:
+                    python --version
 
-        2.Linux
-
-            if already python is installed verify python:
-                python3 --version
-
-            if not installed follow the step to install python:
-                sudo apt update
-                sudo apt install python3 python3-pip -y
-
-            Verify the installation:
-            python3 --version
-
-    2. Ollama Installation
-
-        1. Linux:
-            1. Install Ollama:
-                Visit: https://ollama.com/download
-
-                Or install using:
-                    curl -fsSL https://ollama.com/install.sh | sh
-
-            2. Verify Installation
-                ollama --version
-
-            3. Verify Ollama Service
-
-                Ensure that the Ollama service is running.
-
-                    Open a web browser and navigate to:
-                        http://127.0.0.1:11434/
-
-                    If Ollama is running successfully, you should see a response similar to:
-
-                        Ollama is running
-
-            4. Download Required Models
-                ollama pull llama3.2:3b
-                ollama pull nomic-embed-text:latest
-        
-            5. Verify Downloaded Models
-                ollama list
-
-
-        2. Windows:
+        - ollama Installation:
             1. Download Ollama from:
                 https://ollama.com/download
 
@@ -141,68 +99,231 @@ Requirements:
 
                     If Ollama is running successfully, you should see a response similar to:
                         Ollama is running
-        
 
-            5. Go to the Cmd Prompt and Download the required models:
-		Paste the cmd in the cmd prompt
-               	 >ollama pull llama3.2:3b
-               	 >ollama pull nomic-embed-text:latest
+            5. open command prompt and download the models:
+                ollama pull llama3.2:3b
+               	ollama pull nomic-embed-text:latest
 
             6. Verify the downloaded models:
-                ollama list
+                ollama list                 -- you should see the download models
 
-            7. installed models
-                NAME                       ID              SIZE      MODIFIED
-		nomic-embed-text:latest    0a109f422b47    274 MB    15 seconds ago
-		llama3.2:3b                a80c4f17acd5    2.0 GB    35 seconds ago
-
-Installation:
-    1. Download the Project
-
+    # Project Installation in windows
         Repository URL:
             https://github.com/purpleSynapz/PurpleSynapz-Vulnerable-Ai-ChatBot   
 
-        1: Clone Using Git:
+        Choose any one way to install github Repository:
+            1: Clone Using Git:
+                git clone https://github.com/purpleSynapz/PurpleSynapz-Vulnerable-Ai-ChatBot.git
 
-            git clone https://github.com/purpleSynapz/PurpleSynapz-Vulnerable-Ai-ChatBot.git
+            2: Download ZIP:
+                1. Open the repository URL in your browser.
+                2. Click **Code**.
+                3. Select **Download ZIP**.
+                4. Extract the downloaded ZIP file.
+                5. Open a terminal or command prompt in the extracted project directory.
 
-        2: Download ZIP:
-            1. Open the repository URL in your browser.
-            2. Click **Code**.
-            3. Select **Download ZIP**.
-            4. Extract the downloaded ZIP file.
-            5. Open a terminal or command prompt in the extracted project directory.
+            3: GitHub Desktop:
+                1. Open the repository URL.
+                2. Click **Code** → **Open with GitHub Desktop**.
+                3. Choose a local directory and clone the repository.
 
-        3: GitHub Desktop:
-            1. Open the repository URL.
-            2. Click **Code** → **Open with GitHub Desktop**.
-            3. Choose a local directory and clone the repository.
+    # Create Virtual Environment by executing the commands in Terminal/Command Prompt
 
+        cd PurpleSynapz-Vulnerable-Ai-ChatBot
+        python -m venv myworld
+        myworld\Scripts\activate
 
-
-    2. Create Virtual Environment by executing the commands in Terminal/Command Prompt till step 4
-
-        Linux:
-            cd PurpleSynapz-Vulnerable-Ai-ChatBot
-            python -m venv myworld
-            source myworld/bin/activate
-
-        Windows:
-            cd PurpleSynapz-Vulnerable-Ai-ChatBot
-            python -m venv myworld
-            myworld\Scripts\activate
-
-    3. Install Dependencies
+    # Install Dependencies
         pip install -r requirements.txt
 
-    4. Start Application
+    # Start Application
         python main.py
 
-    5. The application will be available at:
-        http://127.0.0.1:9000
+    # The application will be available at:
+        application url: http://127.0.0.1:7000
 
-Creating a User Account
 
+
+    # Installation of Python and Ollama for Linux
+        execute below commands in Terminal/Command Prompt
+
+        - Python Installation:
+            if already python is installed verify python:
+                python3 --version
+
+            if not installed follow the step to install python:
+                sudo apt update
+                sudo apt install python3 python3-pip python3-venv -y
+
+            Verify the installation:
+                python3 --version
+
+        - ollama Installation:
+            1. Install Ollama:
+                Visit: https://ollama.com/download
+            Or install using:
+                curl -fsSL https://ollama.com/install.sh | sh
+
+            2. Verify Installation
+                ollama --version
+
+            3. Verify Ollama Service:
+                Ensure that the Ollama service is running by performing curl operation.
+                curl http://127.0.0.1:11434/
+
+            
+            4. Download Required Models
+                ollama pull llama3.2:3b
+                ollama pull nomic-embed-text:latest
+        
+            5. Verify Downloaded Models
+                ollama list         -- you should see the download models
+    
+    # Project Installation in Linux
+        Repository URL:
+            https://github.com/purpleSynapz/PurpleSynapz-Vulnerable-Ai-ChatBot   
+
+        Choose any one way to install github Repository:
+            1: Clone Using Git:
+                git clone https://github.com/purpleSynapz/PurpleSynapz-Vulnerable-Ai-ChatBot.git
+
+            2: Download ZIP:
+                1. Open the repository URL in your browser.
+                2. Click **Code**.
+                3. Select **Download ZIP**.
+                4. Extract the downloaded ZIP file.
+                5. Open a terminal or command prompt in the extracted project directory.
+
+            3: GitHub Desktop:
+                1. Open the repository URL.
+                2. Click **Code** → **Open with GitHub Desktop**.
+                3. Choose a local directory and clone the repository.
+
+    # Create Virtual Environment by executing the commands in Terminal/Command Prompt
+
+        cd PurpleSynapz-Vulnerable-Ai-ChatBot
+        python3 -m venv myworld
+        source myworld/bin/activate
+
+    # Install Dependencies
+        pip install -r requirements.txt
+        or 
+        pip3 install -r requirements.txt
+
+    # Start Application
+        python3 main.py
+
+    # If the system is running the Linux/Ubuntu desktop version, the application will be available at:
+        available url: http://127.0.0.1:7000
+
+    # If it is running on a server, update the application host configuration in config.py with the server/VM IP address.
+    - stop the application for command prompt/terminal:
+        press: Ctrl + c
+
+    # Steps to update config.py
+        - To open the config.py file, open a command prompt/terminal, navigate to the application directory, and open the file using a text editor such as nano, vim, or gedit.
+        - run this in project directory PurpleSynapz-Vulnerable-Ai-ChatBot:
+            nano config.py
+        - Locate the following line:
+            host = _get_env("APP_HOST", "127.0.0.1")
+
+        - Replace 127.0.0.1 with the IP address of your server or VM. 
+        For example:
+            host = _get_env("APP_HOST", "192.168.1.100")
+        - Save the changes to config.py:
+            press: Ctrl+o     - to write 
+            here:File Name to write: config.py - press Enter    - to apply
+            press: Ctrl+x      - to exit
+
+        - Start Application:
+            python3 main.py
+
+        - The application will be available at:
+            application url: http://<sever_or_vm_ip>:7000
+
+
+
+    # Installation of Python and Ollama for macOS:
+        execute below commands in Terminal/Command Prompt
+        -Python Installation:
+            If Python is already installed, verify:
+                python3 --version
+
+            if not installed follow the step to install python:
+
+                1. Download Python from:
+                https://www.python.org/downloads/macos/
+                    Download Latest Python 3 Release
+
+                2. Run the installer and follow the installation wizard.
+
+                3. Verify the installation:
+                    python3 --version
+
+        - ollama Installation:
+            1. Install Ollama:
+                Visit: https://ollama.com/download
+                - choose Macos and click on the download for macos
+
+            2. Verify Installation use 
+                ollama --version
+
+            3. Verify Ollama Service:
+                Ensure that the Ollama service is running performing curl operation.
+                curl http://127.0.0.1:11434/
+                
+                - ollama is not running:
+                    ollama serve
+
+                    perform step 3 to Verify Ollama Service 
+
+            4. Download Required Models
+                ollama pull llama3.2:3b
+                ollama pull nomic-embed-text:latest
+        
+            5. Verify Downloaded Models
+                ollama list         -- you should see the download models
+
+    # Project Installation in Macos:
+        Repository URL:
+            https://github.com/purpleSynapz/PurpleSynapz-Vulnerable-Ai-ChatBot   
+
+        Choose any one way to install github Repository:
+            1: Clone Using Git:
+                git clone https://github.com/purpleSynapz/PurpleSynapz-Vulnerable-Ai-ChatBot.git
+
+            2: Download ZIP:
+                1. Open the repository URL in your browser.
+                2. Click **Code**.
+                3. Select **Download ZIP**.
+                4. Extract the downloaded ZIP file.
+                5. Open a terminal or command prompt in the extracted project directory.
+
+            3: GitHub Desktop:
+                1. Open the repository URL.
+                2. Click **Code** → **Open with GitHub Desktop**.
+                3. Choose a local directory and clone the repository.
+
+    # Create Virtual Environment by executing the commands in Terminal/Command Prompt
+
+        cd PurpleSynapz-Vulnerable-Ai-ChatBot
+        python3 -m venv myworld
+        source myworld/bin/activate
+
+    # Install Dependencies
+        pip install -r requirements.txt
+        or 
+        pip3 install -r requirements.txt
+
+    # Start Application
+        python3 main.py
+
+    # The application will be available at:
+        application url: http://127.0.0.1:7000
+
+
+
+# Creating a User Account
     The application provides a Register option for creating a new user account.
 
     Steps to Register:
@@ -223,7 +344,7 @@ Creating a User Account
 
     Note: The User role does not have access to Admin features like updating knowledge base.
 
-Updating the Knowledge Base:
+# Updating the Knowledge Base:
     To update the knowledge base, users must log in with an Admin account.
 
     1.Open the application in your browser.
@@ -236,10 +357,10 @@ Updating the Knowledge Base:
 
     Note:Only users with the Admin credentials are authorized to upload knowledge base content.
 
-⚠️ Disclaimer:
+# ⚠️ Disclaimer:
     The authors, contributors, and PurpleSynapz are not responsible for any misuse of this project.
     This Application is provided for educational and training purposes only. Users are responsible for ensuring compliance with applicable laws, regulations, and policies.
 
-Contact
+# Contact
     For any questions, issues, or support requests,
     please contact: info@purplesynapz.com

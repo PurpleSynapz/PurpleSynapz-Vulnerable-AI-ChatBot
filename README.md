@@ -110,7 +110,7 @@ Requirements:
                 Ensure that the Ollama service is running.
 
                     Open a web browser and navigate to:
-                        http://127.0.0.1:11434/
+                    curl http://127.0.0.1:11434/
 
                     If Ollama is running successfully, you should see a response similar to:
 
@@ -184,7 +184,7 @@ Installation:
 
         Linux:
             cd PurpleSynapz-Vulnerable-Ai-ChatBot
-            python -m venv myworld
+            python3 -m venv myworld
             source myworld/bin/activate
 
         Windows:
@@ -196,10 +196,10 @@ Installation:
         pip install -r requirements.txt
 
     4. Start Application
-        python main.py
+        python3 main.py
 
     5. The application will be available at:
-        http://127.0.0.1:9000
+        http://127.0.0.1:7000
 
 Creating a User Account
 

@@ -102,10 +102,10 @@ Requirements:
                 Or install using:
                     curl -fsSL https://ollama.com/install.sh | sh
 
-            2. Verify Installation
+            2. Open Command Prompt Verify Installation
                 ollama --version
 
-            3. Verify Ollama Service
+            3. Open Command Prompt Verify Ollama Service
 
                 Ensure that the Ollama service is running.
 
@@ -116,11 +116,11 @@ Requirements:
 
                         Ollama is running
 
-            4. Download Required Models
+            4. Open Command Prompt Download Required Models
                 ollama pull llama3.2:3b
                 ollama pull nomic-embed-text:latest
         
-            5. Verify Downloaded Models
+            5. Open Command Prompt Verify Downloaded Models
                 ollama list
 
 

@@ -378,6 +378,13 @@ PurpleSynapz Vulnerable AI ChatBot
     5.Click the 'upload to db' to update the knowledge base used by the RAG system.
 
     Note:Only users with the Admin credentials are authorized to upload knowledge base content.
+    
+# 🚧 Important
+
+The **Test** feature is currently under active development.
+This feature will allow users to test their prompt engineering skills and evaluate whether they can retrieve sensitive or confidential information from the ChatBot. It will include multiple test types, and detailed result analysis.
+
+**This functionality is a work in progress and will be added in an upcoming update. Stay tuned!**
 
 # ⚠️ Disclaimer:
     The authors, contributors, and PurpleSynapz are not responsible for any misuse of this project.

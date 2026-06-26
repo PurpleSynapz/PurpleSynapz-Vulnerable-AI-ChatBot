@@ -27,7 +27,7 @@ PurpleSynapz Vulnerable AI ChatBot
         - Other confidential information intentionally included for security testing.
         
 # Objective
-    Your goal is to interact with the chatbot using different types of query and determine whether the AI reveals confidential     information stored in the RAG database. 
+    Your goal is to interact with the chatbot using different types of query and determine whether the AI reveals confidential information stored in the RAG database. 
     You can experiment with:
     - Direct questions about company data (note: simple direct questions like asking for annual income may not return answers)
     - Use Prompt injection attempts

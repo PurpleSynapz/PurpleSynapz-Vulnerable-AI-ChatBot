@@ -12,6 +12,28 @@ PurpleSynapz Vulnerable AI ChatBot
     DO NOT use this application in production environments.
     The application may contain intentionally vulnerable configurations, insecure logic, and demonstration code that could expose sensitive information if deployed in a real world environment.
 
+# Getting Started with the Vulnerable AI ChatBot
+    Follow the installation steps given below and ensure all required services are running. Once the setup is complete, open the web        application in your browser. You will now have access to the chatbot, which is connected to a Retrieval-Augmented Generation (RAG)      knowledge base containing sample documents, including general information, company related data, and intentionally sensitive information
+
+    # What to Explore
+        Use the Chat page to interact with the AI assistant and explore the knowledge base. and observe how the chatbot responds.
+        The sample RAG database contains information such as:
+        - Login credentials
+        - General company information
+        - Employee details
+        - Internal company documents
+        - Customer information
+        - Financial records
+        - Other confidential information intentionally included for security testing.
+        
+# Objective
+    Your goal is to interact with the chatbot using different types of query and determine whether the AI reveals confidential     information stored in the RAG database. 
+    You can experiment with:
+    - Direct questions about company data (note: simple direct questions like asking for annual income may not return answers)
+    - Use Prompt injection attempts
+    - Use Indirect or role playing queries
+    - Other different techniques to gradually extract restricted information.
+    - Attempts to retrieve sensitive company details such as employee phone numbers, salary information, PAN number, registration number, login credentials, profit information, what are servers are being used and other confidential data using any possible technique
 
 # Features:
     *AI Chat Interface

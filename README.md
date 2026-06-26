@@ -13,7 +13,7 @@ PurpleSynapz Vulnerable AI ChatBot
     The application may contain intentionally vulnerable configurations, insecure logic, and demonstration code that could expose sensitive information if deployed in a real world environment.
 
 # Getting Started with the Vulnerable AI ChatBot
-    Follow the installation steps given below and ensure all required services are running. Once the setup is complete, open the web        application in your browser. You will now have access to the chatbot, which is connected to a Retrieval-Augmented Generation (RAG)      knowledge base containing sample documents, including general information, company related data, and intentionally sensitive information
+    Follow the installation steps given below and ensure all required services are running. Once the setup is complete, open the web application in your browser. You will now have access to the chatbot, which is connected to a Retrieval-Augmented Generation (RAG)      knowledge base containing sample documents, including general information, company related data, and intentionally sensitive information
 
     # What to Explore
         Use the Chat page to interact with the AI assistant and explore the knowledge base. and observe how the chatbot responds.

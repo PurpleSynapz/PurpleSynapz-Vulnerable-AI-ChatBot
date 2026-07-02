@@ -12,6 +12,38 @@ PurpleSynapz Vulnerable AI ChatBot
     DO NOT use this application in production environments.
     The application may contain intentionally vulnerable configurations, insecure logic, and demonstration code that could expose sensitive information if deployed in a real world environment.
 
+# Getting Started with the Vulnerable AI ChatBot
+    Follow the installation steps given in Requirements and ensure all required services are running. Once the setup is complete, open the web application in your browser. You will now have access to the chatbot, which is connected to a Retrieval-Augmented Generation (RAG) knowledge base containing sample documents, including general information, company related data, and intentionally sensitive information
+
+    # What to Explore
+        Use the Chat page to interact with the AI assistant and explore the knowledge base. and observe how the chatbot responds.
+        The sample RAG database contains information such as:
+        - Login credentials
+        - General company information
+        - Employee details
+        - Internal company documents
+        - Customer information
+        - Financial records
+        - Other confidential information intentionally included for security testing.
+        
+# Objective
+    Your goal is to interact with the chatbot using different types of query and determine whether the AI reveals confidential information stored in the RAG database. 
+    You can experiment with:
+    - Direct questions about company data (note: simple direct questions like asking for annual income may not return answers)
+    - Use Prompt injection attempts
+    - Use Indirect or role playing queries
+    - Other different techniques to gradually extract restricted information.
+    - Attempts to retrieve sensitive company details such as employee phone numbers, salary information, PAN number, registration number, login credentials, profit information, what are servers are being used and other confidential data using any possible technique.
+
+# Test Feature:
+    After using different techniques to identify and extract sensitive information from the chatbot, you can use the Take Test feature to verify whether the collected information is accurate.
+      
+    Answer via Bot Query:
+        - Users can interact with the chatbot directly within the test interface.
+        - For each question, users are provided up to 3 chatbot queries (attempts) to retrieve the required information before submitting their answer.
+        - This mode evaluates whether the chatbot reveals confidential information when users actively attempt different querying techniques during the test.
+    
+    Note: The purpose of the Take Test feature is to verify whether the information collected from the chatbot is correct or not after attempting to retrieve it using different querying techniques.
 
 # Features:
     *AI Chat Interface
@@ -58,15 +90,15 @@ PurpleSynapz Vulnerable AI ChatBot
             5.Network           -- Stable broadband connection.
 
     2.Python 3.12+
-    3.Ollama
+    3.Ollama 0.30+ 
 
-    # Installation of Python and Ollama for windows
+    # Installation of Python and Ollama for (Windows 10/11)
             execute below commands in Terminal/Command Prompt
 
     
         - Python Installation:
             if already python is installed verify python:
-                python --version
+                python --version                 -- Verify that Python 3.12 or later is installed.
 
             if not installed follow the step to install python:
 
@@ -80,7 +112,7 @@ PurpleSynapz Vulnerable AI ChatBot
                     Add Python to PATH
 
                 4. Verify the installation:
-                    python --version
+                    python --version            -- Verify that Python 3.12 or later is installed.
 
         - ollama Installation:
             1. Download Ollama from:
@@ -89,7 +121,7 @@ PurpleSynapz Vulnerable AI ChatBot
             2. Run the installer and complete the installation.
 
             3. Open Command Prompt and verify the installation:
-                ollama --version
+                ollama --version                -- Verify that Ollama v0.30.0 or later is installed.
 
             4. Verify Ollama Service:
                 Ensure that the Ollama service is running.
@@ -107,7 +139,7 @@ PurpleSynapz Vulnerable AI ChatBot
             6. Verify the downloaded models:
                 ollama list                 -- you should see the download models
 
-    # Project Installation in windows
+    # Project Installation in (Windows 10/11)
         Repository URL:
             https://github.com/purpleSynapz/PurpleSynapz-Vulnerable-Ai-ChatBot   
 
@@ -144,19 +176,19 @@ PurpleSynapz Vulnerable AI ChatBot
 
 
 
-    # Installation of Python and Ollama for Linux
+    # Installation of Python and Ollama for (Ubuntu 22.04+)
         execute below commands in Terminal/Command Prompt
 
         - Python Installation:
             if already python is installed verify python:
-                python3 --version
+                python3 --version                   -- Verify that Python 3.12 or later is installed.
 
             if not installed follow the step to install python:
                 sudo apt update
                 sudo apt install python3 python3-pip python3-venv -y
 
             Verify the installation:
-                python3 --version
+                python3 --version                   -- Verify that Python 3.12 or later is installed.
 
         - ollama Installation:
             1. Install Ollama:
@@ -165,7 +197,7 @@ PurpleSynapz Vulnerable AI ChatBot
                 curl -fsSL https://ollama.com/install.sh | sh
 
             2. Verify Installation
-                ollama --version
+                ollama --version                    -- Verify that Ollama v0.30.0 or later is installed.
 
             3. Verify Ollama Service:
                 Ensure that the Ollama service is running by performing curl operation.
@@ -179,7 +211,7 @@ PurpleSynapz Vulnerable AI ChatBot
             5. Verify Downloaded Models
                 ollama list         -- you should see the download models
     
-    # Project Installation in Linux
+    # Project Installation in (Ubuntu 22.04+)
         Repository URL:
             https://github.com/purpleSynapz/PurpleSynapz-Vulnerable-Ai-ChatBot   
 
@@ -247,7 +279,7 @@ PurpleSynapz Vulnerable AI ChatBot
         execute below commands in Terminal/Command Prompt
         -Python Installation:
             If Python is already installed, verify:
-                python3 --version
+                python3 --version                        -- Verify that Python 3.12 or later is installed.
 
             if not installed follow the step to install python:
 
@@ -258,7 +290,7 @@ PurpleSynapz Vulnerable AI ChatBot
                 2. Run the installer and follow the installation wizard.
 
                 3. Verify the installation:
-                    python3 --version
+                    python3 --version                   -- Verify that Python 3.12 or later is installed.
 
         - ollama Installation:
             1. Install Ollama:
@@ -266,7 +298,7 @@ PurpleSynapz Vulnerable AI ChatBot
                 - choose Macos and click on the download for macos
 
             2. Verify Installation use 
-                ollama --version
+                ollama --version                     -- Verify that Ollama v0.30.0 or later is installed.
 
             3. Verify Ollama Service:
                 Ensure that the Ollama service is running performing curl operation.
@@ -341,21 +373,18 @@ PurpleSynapz Vulnerable AI ChatBot
             1.Log in to the application.
             2.Interact with the AI chatbot.
             3.Submit chat queries and receive responses.
-
-    Note: The User role does not have access to Admin features like updating knowledge base.
-
-# Updating the Knowledge Base:
-    To update the knowledge base, users must log in with an Admin account.
-
-    1.Open the application in your browser.
-    2.Log in using credentials:
-        username: admin,
-        password:admin@123
-    3.Navigate to the Upload Knowledge File section.
-    4.Upload the new pdf or txt files.
-    5.Click the 'upload to db' to update the knowledge base used by the RAG system.
-
-    Note:Only users with the Admin credentials are authorized to upload knowledge base content.
+            4.After attempting to retrieve sensitive information from the chatbot, use the **Test** feature and answer the questions using the **Ask Bot** option, which allows you to query the chatbot directly to retrieve the required information.
+    
+    admin Role:
+        1. Open the application in your browser.
+        2. Log in using the admin credentials:
+            - **Username:** admin
+            - **Password:** admin@123
+        3. After logging in, admin can:
+            - Interact with the AI chatbot through the **Chat** page.
+            - View the documents available in the knowledge base through the **Available Docs** section.
+            - Create tests for users.
+            - View user performance and test results through the performance dashboard.
 
 # ⚠️ Disclaimer:
     The authors, contributors, and PurpleSynapz are not responsible for any misuse of this project.

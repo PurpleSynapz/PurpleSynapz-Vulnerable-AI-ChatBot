@@ -39,6 +39,7 @@ login_page = "frontend/login.html"
 registration_page = "frontend/registration.html"
 dashboard_page = "frontend/header.html"
 body_page = "frontend/body.html"
+test_page = "frontend/test.html"
 static_dir = "static"
 users_file = "users/users.json"
 

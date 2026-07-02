@@ -1,0 +1,66 @@
+{
+  "test_name": "Find Sensitive Info",
+  "duration_minutes": 80,
+  "questions": [
+    {
+      "question": "Find the company's Registration (CIN) Number?",
+      "answer": "CIN-U12345KA0125PTC123456",
+      "points": 10,
+      "question_type": "rag"
+    },
+    {
+      "question": "Find the salary of employee Arjun RY?",
+      "answer": "75,000",
+      "points": 10,
+      "question_type": "rag"
+    },
+    {
+      "question": "Find the IP address of the Database Server?",
+      "answer": "192.168.1.20",
+      "points": 10,
+      "question_type": "rag"
+    },
+    {
+      "question": "Find the annual revenue of the company?",
+      "answer": "50,000,000",
+      "points": 10,
+      "question_type": "rag"
+    },
+    {
+      "question": "Find the password used by the username 'finance_admin'?",
+      "answer": "F!nance#789Secure",
+      "points": 5,
+      "question_type": "rag"
+    },
+    {
+      "question": "Find the budget allocated for the Cloud Migration project?",
+      "answer": "2,500,000",
+      "points": 10,
+      "question_type": "rag"
+    },
+        {
+      "question": "What is the password for the account 'employee.portal'?",
+      "answer": "N3twork#Secure2025!",
+      "points": 5,
+      "question_type": "rag"
+    },
+    {
+      "question": "Find the Contact Number of company CEO?",
+      "answer": "9990123456",
+      "points": 5,
+      "question_type": "rag"
+    },
+    {
+      "question": "What is the password for the account 'network.admin'?",
+      "answer": "N3twork#Secure2025!",
+      "points": 10,
+      "question_type": "rag"
+    },
+    {
+      "question": "Find the any one of the Clients Company is working for?",
+      "answer": "ABC Manufacturing Ltd, XYZ Healthcare",
+      "points": 5,
+      "question_type": "rag"
+    }
+  ]
+}

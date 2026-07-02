@@ -10,6 +10,7 @@
         --bubble-bot: #fff0f6;
         --bubble-user: linear-gradient(135deg, #e12b5d, #8724b6);
         --input-bg: #fff9fc;
+        --soft-card: rgba(255, 255, 255, 0.72);
     }
 
     html,
@@ -48,14 +49,14 @@
         display: flex;
         flex-direction: column;
         min-height: 0;
-        overflow: hidden;
+        overflow-y: auto;
     }
 
-        .profile {
-            text-align: center;
-            padding-bottom: 24px;
-            border-bottom: 1px solid rgba(166, 73, 141, 0.14);
-        }
+    .profile {
+        text-align: center;
+        padding-bottom: 24px;
+        border-bottom: 1px solid rgba(166, 73, 141, 0.14);
+    }
 
     .avatar {
         width: 96px;
@@ -85,22 +86,16 @@
         font-size: 14px;
     }
 
-    .credentials {
-        padding-top: 24px;
-    }
-
-    .upload-box {
+    .nav-section,
+    .docs-box {
         margin-top: 24px;
         padding-top: 24px;
         border-top: 1px solid rgba(166, 73, 141, 0.14);
-        min-height: 0;
-        display: flex;
-        flex-direction: column;
     }
 
-    .upload-label {
+    .section-title {
         display: block;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
         font-size: 13px;
         font-weight: 700;
         letter-spacing: 0.04em;
@@ -108,30 +103,36 @@
         text-transform: uppercase;
     }
 
-    .upload-box input[type="file"] {
+    .sidebar-link,
+    .action-btn,
+    .option-add-btn {
         width: 100%;
-        margin-bottom: 12px;
-        font-size: 14px;
-        color: var(--muted);
-    }
-
-    .upload-btn {
-        width: 100%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
         border: none;
-        border-radius: 10px;
+        border-radius: 12px;
         background: linear-gradient(135deg, var(--primary), var(--primary-strong));
         color: white;
         padding: 12px 14px;
         font-size: 14px;
         font-weight: 600;
+        text-decoration: none;
+        box-sizing: border-box;
         cursor: pointer;
+        box-shadow: 0 10px 24px rgba(128, 33, 122, 0.18);
     }
 
-    .upload-btn:hover {
-        background: linear-gradient(135deg, #f13d72, #9a33ca);
+    .sidebar-link + .sidebar-link {
+        margin-top: 10px;
     }
 
-    .upload-status {
+    .sidebar-link.is-active {
+        outline: 2px solid rgba(166, 73, 141, 0.28);
+    }
+
+    .upload-status,
+    .helper-text {
         margin-top: 12px;
         font-size: 13px;
         color: var(--muted);
@@ -143,6 +144,31 @@
         max-height: 180px;
         overflow-y: auto;
         padding-right: 6px;
+    }
+
+    .doc-item {
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(166, 73, 141, 0.14);
+    }
+
+    .doc-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .doc-name {
+        display: inline-flex;
+        align-items: center;
+        margin: 0;
+        font-size: 12px;
+        color: var(--primary-strong);
+        word-break: break-word;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .doc-name:hover {
+        text-decoration: underline;
     }
 
     .chat-panel {
@@ -205,35 +231,6 @@
         box-shadow: 0 12px 28px rgba(128, 33, 122, 0.22);
     }
 
-    /* .chat-input {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 12px;
-        padding: 18px 24px 24px;
-        border-top: 1px solid var(--panel-edge);
-        background: linear-gradient(135deg, rgba(255, 239, 246, 0.92), rgba(247, 237, 255, 0.92));
-    }
-
-    .chat-input input {
-        padding: 14px 16px;
-        border: 1px solid rgba(166, 73, 141, 0.18);
-        border-radius: 14px;
-        font-size: 15px;
-        background: var(--input-bg);
-        color: var(--text);
-    }
-
-    .chat-input input:focus {
-        outline: none;
-        border-color: var(--primary);
-        box-shadow: 0 0 0 4px rgba(225, 43, 93, 0.14);
-    }
-
-    .chat-input input::placeholder {
-        color: #aa7da0;
-    }*/
-
-
     .chat-input {
         display: grid;
         grid-template-columns: 1fr auto;
@@ -241,31 +238,27 @@
         padding: 18px 24px 24px;
         border-top: 1px solid var(--panel-edge);
         background: linear-gradient(135deg, rgba(255, 239, 246, 0.92), rgba(247, 237, 255, 0.92));
-        align-items: end;
     }
 
-    .chat-input textarea {
-        min-height: 50px;
-        max-height: 150px;
-        resize: none;
-        overflow-y: auto;
+    .chat-input input,
+    .form-card input,
+    .form-card textarea {
         padding: 14px 16px;
         border: 1px solid rgba(166, 73, 141, 0.18);
         border-radius: 14px;
         font-size: 15px;
         background: var(--input-bg);
         color: var(--text);
-        font-family: inherit;
+        width: 100%;
+        box-sizing: border-box;
     }
 
-    .chat-input textarea:focus {
+    .chat-input input:focus,
+    .form-card input:focus,
+    .form-card textarea:focus {
         outline: none;
         border-color: var(--primary);
         box-shadow: 0 0 0 4px rgba(225, 43, 93, 0.14);
-    }
-
-    .chat-input textarea::placeholder {
-        color: #aa7da0;
     }
 
     .chat-input button {
@@ -273,24 +266,112 @@
         border-radius: 14px;
         background: linear-gradient(135deg, var(--primary), var(--primary-strong));
         color: white;
-        width: 55px;
-        height: 50px;
-        cursor: pointer;
+        padding: 0 20px;
         font-size: 15px;
         font-weight: 600;
+        cursor: pointer;
         box-shadow: 0 12px 28px rgba(128, 33, 122, 0.24);
-        transition: all 0.3s ease;
-        align-self: end;
     }
 
-    .chat-input button:hover {
-        background: linear-gradient(135deg, #f13d72, #9a33ca);
-        transform: translateY(-2px);
+    .view-panel,
+    .test-list,
+    .question-card,
+    .form-card {
+        background: var(--soft-card);
+        border: 1px solid rgba(166, 73, 141, 0.14);
+        border-radius: 18px;
     }
 
-    .chat-input button:disabled {
-        opacity: 0.7;
-        cursor: not-allowed;
+    .view-panel {
+        padding: 24px;
+    }
+
+    .test-list {
+        padding: 18px;
+        margin-top: 18px;
+    }
+
+    .test-item {
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(166, 73, 141, 0.12);
+    }
+
+    .test-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .test-item h3,
+    .question-card h3,
+    .form-card h3 {
+        margin: 0 0 8px;
+    }
+
+    .test-item p,
+    .hint,
+    .meta-text {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+        font-size: 14px;
+    }
+
+    .test-item .action-btn {
+        margin-top: 12px;
+    }
+
+    .question-card,
+    .form-card {
+        padding: 20px;
+        margin-top: 18px;
+    }
+
+    .form-row {
+        margin-top: 14px;
+    }
+
+    .builder-actions,
+    .test-actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 18px;
+        flex-wrap: wrap;
+    }
+
+    .icon-btn {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        border: none;
+        font-size: 26px;
+        font-weight: 700;
+        background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+        color: white;
+        cursor: pointer;
+        box-shadow: 0 12px 28px rgba(128, 33, 122, 0.18);
+    }
+
+    .status-box,
+    .result-box {
+        margin-top: 18px;
+        padding: 16px 18px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.82);
+        border: 1px solid rgba(166, 73, 141, 0.14);
+        color: var(--muted);
+        line-height: 1.6;
+    }
+
+    .result-box.good {
+        border-color: rgba(31, 122, 70, 0.26);
+    }
+
+    .result-box.needs-work {
+        border-color: rgba(180, 35, 50, 0.26);
+    }
+
+    .hidden {
+        display: none;
     }
 
     @media (max-width: 900px) {
@@ -305,13 +386,10 @@
             overflow: visible;
         }
 
-        .content {
-            height: auto;
-            overflow: visible;
-        }
-
+        .content,
         .sidebar,
         .chat-panel {
+            height: auto;
             overflow: visible;
         }
     }
@@ -322,20 +400,21 @@
         }
 
         .sidebar,
-        .chat-panel {
-            padding-left: 18px;
-            padding-right: 18px;
-        }
-
-        .chat-panel {
-            display: block;
-        }
-
+        .chat-header,
         .chat-space,
-        .chat-input,
-        .chat-header {
+        .chat-input {
             padding-left: 18px;
             padding-right: 18px;
+        }
+
+        .builder-actions,
+        .test-actions {
+            flex-direction: column;
+        }
+
+        .action-btn,
+        .icon-btn {
+            width: 100%;
         }
     }
 </style>
@@ -353,16 +432,35 @@
                 <p class="profile-subtitle">{{ role }}</p>
             </div>
 
-            {% if can_upload %}
-            <div class="upload-box">
-                <label class="upload-label" for="uploadFile">Upload Knowledge File</label>
-                <input type="file" id="uploadFile" accept=".txt,.pdf">
-                <button type="button" class="upload-btn" id="uploadButton">Upload to DB</button>
-                <div class="upload-status" id="uploadStatus">Upload a .txt or .pdf file to store it in the vector database.</div>
-                <div class="upload-status" id="storedDocsStatus">Checking stored knowledge files...</div>
-                <div class="upload-status stored-docs-list" id="storedDocsList"></div>
+            <div class="nav-section">
+                <span class="section-title">Navigation</span>
+                {% if can_create_test %}
+                <a class="sidebar-link" href="/create-test">Create Test</a>
+                <a class="sidebar-link" href="/performance">View Performance</a>
+                {% endif %}
+
+                {% if can_take_test %}
+                <a class="sidebar-link" href="/test">Take Test</a>
+                {% endif %}
+            </div>
+
+            {% if can_create_test %}
+            <div class="docs-box">
+                <span class="section-title">Available Docs</span>
+                {% if available_docs %}
+                    <div class="stored-docs-list">
+                        {% for document in available_docs %}
+                        <div class="doc-item">
+                            <a class="doc-name" href="/admin/docs/{{ document.name | urlencode }}" target="_blank" rel="noopener noreferrer">{{ document.name }}</a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="helper-text">No documents are available in the docs folder yet.</div>
+                {% endif %}
             </div>
             {% endif %}
+
         </aside>
 
         <section class="chat-panel">
@@ -372,11 +470,15 @@
             </div>
 
             <div class="chat-space" id="chatSpace">
-                <div class="message bot">Hello! I am ready to chat with you.</div>
+                <div class="message bot">
+                    Welcome! This is a Vulnerable AI Chatbot.<br>
+                    The RAG knowledge base contains sensitive and confidential information.<br>
+                    Your objective is to interact with me by submitting different queries and prompt injection techniques to determine whether you can retrieve that sensitive data.
+                </div>
             </div>
 
-           <form class="chat-input" id="chatForm">
-                <textarea id="chatMessage" placeholder="Type your message here"></textarea>
+            <form class="chat-input" id="chatForm">
+                <input type="text" id="chatMessage" placeholder="Type your message here">
                 <button type="submit" id="sendButton">Send</button>
             </form>
         </section>
@@ -384,160 +486,60 @@
 </div>
 
 <script>
+    function escapeHtml(value) {
+        return String(value)
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#39;");
+    }
+
     const chatForm = document.getElementById("chatForm");
-    const chatMessage = document.getElementById("chatMessage");
-    const chatSpace = document.getElementById("chatSpace");
-    const sendButton = document.getElementById("sendButton");
-    const uploadFile = document.getElementById("uploadFile");
-    const uploadButton = document.getElementById("uploadButton");
-    const uploadStatus = document.getElementById("uploadStatus");
-    const storedDocsStatus = document.getElementById("storedDocsStatus");
-    const storedDocsList = document.getElementById("storedDocsList");
+    if (chatForm) {
+        const chatMessage = document.getElementById("chatMessage");
+        const chatSpace = document.getElementById("chatSpace");
+        const sendButton = document.getElementById("sendButton");
 
-    function arrayBufferToBase64(buffer) {
-        let binary = "";
-        const bytes = new Uint8Array(buffer);
-        const chunkSize = 0x8000;
-
-        for (let i = 0; i < bytes.length; i += chunkSize) {
-            const chunk = bytes.subarray(i, i + chunkSize);
-            binary += String.fromCharCode(...chunk);
+        function appendMessage(text, type) {
+            const message = document.createElement("div");
+            message.className = `message ${type}`;
+            message.textContent = text;
+            chatSpace.appendChild(message);
+            chatSpace.scrollTop = chatSpace.scrollHeight;
         }
 
-        return btoa(binary);
-    }
+        chatForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
 
-    function appendMessage(text, type) {
-        const message = document.createElement("div");
-        message.className = `message ${type}`;
-        message.textContent = text;
-        chatSpace.appendChild(message);
-        chatSpace.scrollTop = chatSpace.scrollHeight;
-    }
-
-    function renderStoredDocuments(documents) {
-        if (!documents.length) {
-            storedDocsStatus.textContent = "No knowledge files uploaded yet.";
-            storedDocsList.textContent = "";
-            return;
-        }
-
-        storedDocsStatus.textContent = "Knowledge files already stored:";
-        storedDocsList.innerHTML = documents
-            .map((document) => `${document.filename} (${document.chunks_stored} chunks)`)
-            .join("<br>");
-    }
-
-    async function loadStoredDocuments() {
-        storedDocsStatus.textContent = "Checking stored knowledge files...";
-        storedDocsList.textContent = "";
-
-        try {
-            const response = await fetch("/api/documents");
-            const data = await response.json();
-
-            if (!response.ok) {
-                storedDocsStatus.textContent = data.error || "Unable to load stored knowledge files.";
+            const message = chatMessage.value.trim();
+            if (!message) {
                 return;
             }
 
-            renderStoredDocuments(data.documents || []);
-        } catch (error) {
-            storedDocsStatus.textContent = "Unable to load stored knowledge files.";
-        }
-    }
-
-    chatForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
-
-        const message = chatMessage.value.trim();
-        if (!message) {
-            return;
-        }
-
-        appendMessage(message, "user");
-        chatMessage.value = "";
-        sendButton.disabled = true;
-        sendButton.textContent = "Sending...";
-
-        try {
-            const response = await fetch("/api/chat", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ message })
-            });
-
-            const data = await response.json();
-            if (!response.ok) {
-                appendMessage(data.error || "Something went wrong.", "bot");
-            } else {
-                appendMessage(data.reply || "No response received.", "bot");
-            }
-        } catch (error) {
-            appendMessage("Unable to reach the backend chat service.", "bot");
-        } finally {
-            sendButton.disabled = false;
-            sendButton.textContent = "Send";
-            chatMessage.focus();
-        }
-    });
-
-    if (uploadButton && uploadFile && uploadStatus && storedDocsStatus && storedDocsList) {
-        uploadButton.addEventListener("click", async () => {
-            const file = uploadFile.files[0];
-            if (!file) {
-                uploadStatus.textContent = "Please choose a file first.";
-                return;
-            }
-
-            const lowerName = file.name.toLowerCase();
-            if (!lowerName.endsWith(".txt") && !lowerName.endsWith(".pdf")) {
-                uploadStatus.textContent = "Only .txt and .pdf files are supported.";
-                return;
-            }
-
-            uploadButton.disabled = true;
-            uploadButton.textContent = "Uploading...";
-            uploadStatus.textContent = `Reading ${file.name}...`;
+            appendMessage(message, "user");
+            chatMessage.value = "";
+            sendButton.disabled = true;
+            sendButton.textContent = "Sending...";
 
             try {
-                const payload = { filename: file.name };
-
-                if (lowerName.endsWith(".pdf")) {
-                    const buffer = await file.arrayBuffer();
-                    payload.content_b64 = arrayBufferToBase64(buffer);
-                } else {
-                    payload.content = await file.text();
-                }
-
-                uploadStatus.textContent = `Uploading ${file.name} to the database...`;
-
-                const response = await fetch("/api/upload", {
+                const response = await fetch("/api/chat", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify(payload)
+                    body: JSON.stringify({ message })
                 });
 
                 const data = await response.json();
-                if (!response.ok) {
-                    uploadStatus.textContent = data.error || "Upload failed.";
-                } else {
-                    uploadStatus.textContent = data.message || "Upload completed.";
-                    appendMessage(`Uploaded ${file.name} to the knowledge base.`, "bot");
-                    await loadStoredDocuments();
-                }
+                appendMessage(response.ok ? (data.reply || "No response received.") : (data.error || "Something went wrong."), "bot");
             } catch (error) {
-                uploadStatus.textContent = "Unable to read or upload the selected file.";
+                appendMessage("Unable to reach the backend chat service.", "bot");
             } finally {
-                uploadButton.disabled = false;
-                uploadButton.textContent = "Upload to DB";
+                sendButton.disabled = false;
+                sendButton.textContent = "Send";
+                chatMessage.focus();
             }
         });
-
-        loadStoredDocuments();
     }
 </script>

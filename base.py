@@ -1,11 +1,11 @@
-import base64
 import json
 from pathlib import Path
 
-from flask import Flask, jsonify, redirect, render_template_string, request, session, url_for
+from flask import Flask, jsonify, redirect, render_template_string, request, send_from_directory, session, url_for
 
-from config import (body_page,dashboard_page,host,login_page,port,registration_page,secret_key,
+from config import (body_page,dashboard_page,host,login_page,port,registration_page,secret_key,test_page,
 static_dir,users,users_file,)
+from test import list_tests, register_test_routes
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -13,8 +13,10 @@ LOGIN_PAGE = BASE_DIR / login_page
 REGISTRATION_PAGE = BASE_DIR / registration_page
 HEADER_PAGE = BASE_DIR / dashboard_page
 BODY_PAGE = BASE_DIR / body_page
+TEST_PAGE = BASE_DIR / test_page
 STATIC_DIR = BASE_DIR / static_dir
 USERS_FILE = BASE_DIR / users_file
+DOCS_DIR = BASE_DIR / "docs"
 CHAT_HANDLER = None
 UPLOAD_HANDLER = None
 DOCUMENTS_HANDLER = None
@@ -42,6 +44,20 @@ def _read_file(file_path: Path):
     if not file_path.exists() or not file_path.is_file():
         raise FileNotFoundError(f"File not found: {file_path}")
     return file_path.read_text(encoding="utf-8")
+
+
+def _list_available_docs():
+    if not DOCS_DIR.exists():
+        return []
+
+    documents = []
+    for file_path in sorted(path for path in DOCS_DIR.iterdir() if path.is_file()):
+        documents.append(
+            {
+                "name": file_path.name,
+            }
+        )
+    return documents
 
 # Load users from the JSON file, merging with the default users defined in config.py.
 def _load_runtime_users():
@@ -92,6 +108,9 @@ def _current_role():
 # Check if the current user has the admin role
 def _is_admin():
     return _current_role() == "admin"
+
+def _is_user():
+    return _current_role() == "user"
 
 # create_app sets up the Flask application with all the necessary routes and handlers for authentication
 def create_app():
@@ -195,6 +214,14 @@ def create_app():
         if not _is_authenticated():
             return redirect(url_for("login"))
 
+        requested_view = request.args.get("view", "chat").strip().lower()
+        allowed_views = {"chat"}
+        if _is_admin():
+            allowed_views.add("create-test")
+        if _is_user():
+            allowed_views.add("take-test")
+        active_view = requested_view if requested_view in allowed_views else "chat"
+
         header_html = _read_file(HEADER_PAGE)
         body_html = _read_file(BODY_PAGE)
         dashboard_html = header_html.replace("</body>", f"{body_html}\n</body>")
@@ -202,8 +229,14 @@ def create_app():
             dashboard_html,
             username=session.get("username", ""),
             role=_current_role(),
-            can_upload=_is_admin(),
+            can_take_test=_is_user(),
+            can_create_test=_is_admin(),
+            active_view=active_view,
+            available_tests=list_tests(),
+            available_docs=_list_available_docs(),
         )
+
+    register_test_routes(app, _is_authenticated, _is_admin, _is_user, _json_auth_error, CHAT_HANDLER, TEST_PAGE)
 
     @app.post("/api/chat")
     def chat():
@@ -230,49 +263,30 @@ def create_app():
     def upload():
         if not _is_authenticated():
             return _json_auth_error()
-        if not _is_admin():
-            return jsonify({"error": "Only admin can upload knowledge files."}), 403
-
-        try:
-            payload = request.get_json(silent=False)
-            filename = payload.get("filename", "").strip()
-            content = payload.get("content", "")
-            content_b64 = payload.get("content_b64", "").strip()
-        except (json.JSONDecodeError, AttributeError):
-            return jsonify({"error": "Invalid request body."}), 400
-
-        if not filename:
-            return jsonify({"error": "Filename is required."}), 400
-        if not content and not content_b64:
-            return jsonify({"error": "File content is required."}), 400
-
-        try:
-            if UPLOAD_HANDLER is None:
-                raise RuntimeError("Upload handler is not configured.")
-
-            if content_b64:
-                file_bytes = base64.b64decode(content_b64)
-                result = UPLOAD_HANDLER(filename, content=None, file_bytes=file_bytes)
-            else:
-                result = UPLOAD_HANDLER(filename, content=content, file_bytes=None)
-
-            return jsonify(result)
-        except Exception as error:
-            return jsonify({"error": str(error)}), 500
+        return jsonify({"error": "Knowledge file upload has been removed."}), 410
 
     @app.get("/api/documents")
     def documents():
         if not _is_authenticated():
             return _json_auth_error()
         if not _is_admin():
-            return jsonify({"error": "Only admin can view uploaded knowledge files."}), 403
+            return jsonify({"error": "Only admin can view available docs."}), 403
+        return jsonify({"documents": _list_available_docs()})
 
-        try:
-            if DOCUMENTS_HANDLER is None:
-                raise RuntimeError("Documents handler is not configured.")
-            return jsonify(DOCUMENTS_HANDLER())
-        except Exception as error:
-            return jsonify({"error": str(error)}), 500
+    @app.get("/admin/docs/<path:filename>")
+    def open_admin_doc(filename):
+        if not _is_authenticated():
+            return _json_auth_error()
+        if not _is_admin():
+            return jsonify({"error": "Only admin can open available docs."}), 403
+
+        requested_path = (DOCS_DIR / filename).resolve()
+        docs_root = DOCS_DIR.resolve()
+
+        if docs_root not in requested_path.parents or not requested_path.is_file():
+            return jsonify({"error": "Document not found."}), 404
+
+        return send_from_directory(DOCS_DIR, requested_path.name, as_attachment=False)
 
     return app
 

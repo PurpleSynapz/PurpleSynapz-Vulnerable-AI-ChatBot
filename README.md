@@ -151,7 +151,7 @@ PurpleSynapz Vulnerable AI ChatBot
                 1. Open the repository URL in your browser.
                 2. Click **Code**.
                 3. Select **Download ZIP**.
-                4. Extract the downloaded ZIP file.
+                4. Extract the downloaded ZIP file (the extracted folder may be named   PurpleSynapz-Vulnerable-Ai-ChatBot-main replace that to PurpleSynapz-Vulnerable-Ai-ChatBot).
                 5. Open a terminal or command prompt in the extracted project directory.
 
             3: GitHub Desktop:
@@ -223,7 +223,7 @@ PurpleSynapz Vulnerable AI ChatBot
                 1. Open the repository URL in your browser.
                 2. Click **Code**.
                 3. Select **Download ZIP**.
-                4. Extract the downloaded ZIP file.
+                4. Extract the downloaded ZIP file (the extracted folder may be named   PurpleSynapz-Vulnerable-Ai-ChatBot-main replace that to PurpleSynapz-Vulnerable-Ai-ChatBot).
                 5. Open a terminal or command prompt in the extracted project directory.
 
             3: GitHub Desktop:
@@ -328,7 +328,7 @@ PurpleSynapz Vulnerable AI ChatBot
                 1. Open the repository URL in your browser.
                 2. Click **Code**.
                 3. Select **Download ZIP**.
-                4. Extract the downloaded ZIP file.
+                4. Extract the downloaded ZIP file (the extracted folder may be named   PurpleSynapz-Vulnerable-Ai-ChatBot-main replace that to PurpleSynapz-Vulnerable-Ai-ChatBot).
                 5. Open a terminal or command prompt in the extracted project directory.
 
             3: GitHub Desktop:
